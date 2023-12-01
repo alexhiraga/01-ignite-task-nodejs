@@ -23,6 +23,9 @@ export const routes = [
         method: 'POST',
         path: buildRoutePath('/tasks'),
         handler: (req, res) => {
+            if(!req.body) {
+                return res.writeHead(400).end()
+            }
             const { title, description } = req.body
 
             if(!title || !description) {
